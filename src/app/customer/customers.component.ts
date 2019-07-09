@@ -14,7 +14,7 @@ export class CustomersComponent implements OnInit {
   dataSource = new MatTableDataSource();
   devicesLoaded = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild (MatPaginator, null) paginator: MatPaginator;
 
   constructor(private customerService: CustomerService) { }
 
