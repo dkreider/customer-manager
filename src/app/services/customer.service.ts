@@ -9,7 +9,7 @@ export class CustomerService {
 
   constructor() { }
 
-  getCustomers(): Customer[] {
+  public getCustomers(): Array<Customer> {
     return Customers;
   }
 
