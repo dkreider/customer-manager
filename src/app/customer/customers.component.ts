@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerService } from '../services/customer.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-customers',
@@ -13,6 +14,8 @@ export class CustomersComponent implements OnInit {
   dataSource = new MatTableDataSource();
   devicesLoaded = false;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
@@ -21,6 +24,7 @@ export class CustomersComponent implements OnInit {
 
   getCustomers(): void {
     this.dataSource = new MatTableDataSource(this.customerService.getCustomers());
+    this.dataSource.paginator = this.paginator;
   }
 
 }

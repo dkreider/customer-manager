@@ -10,6 +10,7 @@ import { CustomersComponent } from './customer/customers.component';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatTableModule } from "@angular/material/table";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
