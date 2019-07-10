@@ -1,1 +1,19 @@
-<p>customer-detail works!</p>
+<div class="row">
+    <h2 class="align-center">Edit Customer</h2>
+    <div class="eight columns offset by-two">
+        <form [formGroup]="customerForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Full Name</mat-label>
+                <input matInput placeholder="Full Name" formControlName="fullName" name="fullName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" name="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber" name="phoneNumber">
+            </mat-form-field>
+        </form>
+    </div>
+</div>
