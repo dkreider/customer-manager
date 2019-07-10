@@ -11,12 +11,14 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    CustomersComponent
+    CustomersComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
