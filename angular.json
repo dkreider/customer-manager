@@ -24,7 +24,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "./node_modules/chota/dist/chota.min.css",
+              "./node_modules/pills/dist/pills.min.css",
               "src/styles.css"
             ],
             "scripts": []
