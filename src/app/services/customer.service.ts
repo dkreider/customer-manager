@@ -8,23 +8,35 @@ import { Subject } from 'rxjs';
 })
 export class CustomerService {
 
-  private subject = new Subject<Customer>();
+  private customerSubject = new Subject<Customer>();
+  private customersSubject = new Subject<Array<Customer>>();
 
   constructor() { }
 
-  public getCustomers(): Array<Customer> {
-    return Customers;
+  public requestCustomers() {
+    this.customersSubject.next(Customers);
+  }
+
+  public getCustomers() {
+    return this.customersSubject.asObservable();
   }
 
   public requestCustomer(customerId: String) {
     let customer = Customers.find(cust => {
       return cust._id == customerId;
     })
-    this.subject.next(customer);
+    this.customerSubject.next(customer);
   }
 
   public getCustomer() {
-    return this.subject.asObservable();
+    return this.customerSubject.asObservable();
+  }
+
+  public deleteCustomer(customerId: String): void {
+    let customerIndex = Customers.findIndex(cust => {
+      return cust._id == customerId;
+    });
+    Customers.splice(customerIndex, 1);
   }
 
 }

@@ -28,4 +28,12 @@ export class CustomerDetailComponent implements OnInit {
     });
   }
 
+  deleteCustomer(): void {
+    if (confirm("Are you sure?")) {
+      this.customerService.deleteCustomer(this.customerForm.value._id);
+      this.customerForm.reset();
+      this.customerService.requestCustomers();
+    }
+  }
+
 }

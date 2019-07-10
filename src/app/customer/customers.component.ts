@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerService } from '../services/customer.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customers',
@@ -13,6 +14,7 @@ export class CustomersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'phoneNumber'];
   dataSource = new MatTableDataSource();
   devicesLoaded = false;
+  subscription: Subscription;
 
   @ViewChild (MatPaginator, null) paginator: MatPaginator;
 
@@ -23,12 +25,19 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomers(): void {
-    this.dataSource = new MatTableDataSource(this.customerService.getCustomers());
-    this.dataSource.paginator = this.paginator;
+    this.subscription = this.customerService.getCustomers().subscribe(customers => {
+      this.dataSource = new MatTableDataSource(customers);
+      this.dataSource.paginator = this.paginator;
+    });
+    this.customerService.requestCustomers();
   }
 
   loadCustomer(customerId: String): void {
     this.customerService.requestCustomer(customerId);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
