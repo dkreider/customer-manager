@@ -39,4 +39,11 @@ export class CustomerService {
     Customers.splice(customerIndex, 1);
   }
 
+  public saveCustomer(customer: Customer): void {
+    let index = Customers.findIndex(cust => {
+      return cust._id == customer._id;
+    });
+    Customers[index] = customer;
+  }
+
 }
