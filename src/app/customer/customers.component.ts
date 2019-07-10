@@ -27,4 +27,8 @@ export class CustomersComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  loadCustomer(customerId: String): void {
+    this.customerService.requestCustomer(customerId);
+  }
+
 }
