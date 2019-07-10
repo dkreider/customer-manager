@@ -16,7 +16,8 @@ export class CustomerDetailComponent implements OnInit {
     _id: new FormControl(''),
     name: new FormControl(''),
     email: new FormControl(''),
-    phoneNumber: new FormControl('')
+    phoneNumber: new FormControl(''),
+    notes: new FormControl('')
   });
 
   constructor(private customerService: CustomerService) { }

@@ -3,4 +3,5 @@ export class Customer {
     name: String;
     email: String;
     phoneNumber: String;
+    notes: String;
 }
