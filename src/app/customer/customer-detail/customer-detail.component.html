@@ -1,5 +1,5 @@
 <div class="row">
-    <h2 class="align-center">Edit Customer</h2>
+    <h2 class="align-center">{{ customerForm.value._id ? customerForm.value.name : "Add Customer" }}</h2>
     <div class="eight columns offset by-two">
         <form [formGroup]="customerForm">
             <mat-form-field appearance="outline">
@@ -18,7 +18,8 @@
                 <mat-label>Notes</mat-label>
                 <textarea matInput placeholder="Notes" formControlName="notes" name="notes">Notes</textarea>
             </mat-form-field>
-            <button mat-stroked-button class="offset by-four" (click)="saveCustomer()">Save</button>
+            <button mat-stroked-button class="offset by-three" (click)="saveCustomer()">Save</button>
+            <button mat-stroked-button class="offset by-one" (click)="clearForm()">Clear</button>
             <button mat-stroked-button class="offset by-one" (click)="deleteCustomer()">Delete</button>
         </form>
     </div>
