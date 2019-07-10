@@ -29,7 +29,11 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   saveCustomer(): void {
+    if (!this.customerForm.value._id) {
+      this.customerForm.value._id = Math.floor((Math.random() * 10000) + 1);
+    }
     this.customerService.saveCustomer(this.customerForm.value);
+    this.customerService.requestCustomer(this.customerForm.value._id);
     this.customerService.requestCustomers();
   }
 

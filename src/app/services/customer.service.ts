@@ -43,7 +43,11 @@ export class CustomerService {
     let index = Customers.findIndex(cust => {
       return cust._id == customer._id;
     });
-    Customers[index] = customer;
+    if (index != -1) {
+      Customers[index] = customer;
+    } else {
+      Customers.unshift(customer);
+    }
   }
 
 }
