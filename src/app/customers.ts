@@ -2,7 +2,7 @@ import { Customer } from "./models/customer";
 
 export var Customers: Array<Customer> = [
     {
-        _id: "1243",
+        _id: "1233",
         name: "Sarah W",
         email: "sarah@sarah.com",
         phoneNumber: "443-098-9043",
