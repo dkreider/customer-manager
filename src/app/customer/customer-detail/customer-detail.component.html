@@ -18,9 +18,9 @@
                 <mat-label>Notes</mat-label>
                 <textarea matInput placeholder="Notes" formControlName="notes" name="notes">Notes</textarea>
             </mat-form-field>
-            <button mat-stroked-button class="offset by-three" (click)="saveCustomer()">Save</button>
+            <button mat-stroked-button class="offset by-three" (click)="saveCustomer()" [disabled]="!customerForm.value.name">Save</button>
             <button mat-stroked-button class="offset by-one" (click)="clearForm()">Clear</button>
-            <button mat-stroked-button class="offset by-one" (click)="deleteCustomer()">Delete</button>
+            <button mat-stroked-button class="offset by-one" (click)="deleteCustomer()" [disabled]="!customerForm.value._id">Delete</button>
         </form>
     </div>
 </div>
