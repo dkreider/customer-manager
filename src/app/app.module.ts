@@ -15,13 +15,21 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { environment } from "../environments/environment";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     CustomersComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,10 @@ import { MatInputModule } from "@angular/material/input";
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

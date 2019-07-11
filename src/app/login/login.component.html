@@ -1,0 +1,16 @@
+<div class="row" id="login-form">
+    <h2 class="align-center">Login Required</h2>
+    <div class="six columns offset by-three">
+        <form [formGroup]="loginForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Email" formControlName="email" name="email" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Password" formControlName="password" name="password" required>
+            </mat-form-field>
+            <button mat-stroked-button (click)="login()" [disabled]="!loginForm.valid">Login</button>
+        </form>
+    </div>
+</div>
