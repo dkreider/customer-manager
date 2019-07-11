@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,5 @@ import { auth } from 'firebase/app';
 })
 export class AppComponent {
   title = 'customer-manager';
-  constructor(public afAuth: AngularFireAuth) {
-
-  }
-  logout() {
-    this.afAuth.auth.signOut();
-  }
+  constructor(public authenticationService: AuthenticationService) {  }
 }
