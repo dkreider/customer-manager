@@ -10,7 +10,7 @@
                 <mat-label>Password</mat-label>
                 <input type="password" matInput placeholder="Password" formControlName="password" name="password" required>
             </mat-form-field>
-            <button mat-stroked-button (click)="login()" [disabled]="!loginForm.valid">Login</button>
+            <button mat-stroked-button (click)="login()" [disabled]="!loginForm.valid">{{verifyingCredentials ? "Thinking..." : "Login"}}</button>
         </form>
     </div>
 </div>
