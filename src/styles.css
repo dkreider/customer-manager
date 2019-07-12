@@ -16,12 +16,6 @@ body {
  * https://github.com/rohitkrai03/pills
  * Copyright 2015, Rohit Rai
  */
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
 *,
 *:after,
 *:before {
