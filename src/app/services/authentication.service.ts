@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from "firebase/app";
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn(): boolean {
-    if (this.afAuth.user) {
+    if (this.afAuth.auth.currentUser) {
       return true;
     }
     return false;
