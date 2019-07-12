@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from "firebase/app";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FirebaseAuth } from '@angular/fire';
 
 
 @Injectable({
@@ -13,10 +14,8 @@ export class AuthenticationService {
     private afAuth: AngularFireAuth,
     private snackBar: MatSnackBar) { }
 
-  login(username: string, password: string): void {
-    this.afAuth.auth.signInWithEmailAndPassword(username, password).catch(error => {
-      this.snackBar.open(error.message, "OK", {duration: 5000})
-    });
+  login(username: string, password: string): Promise<auth.UserCredential>{
+    return this.afAuth.auth.signInWithEmailAndPassword(username, password);
 
   }
 
