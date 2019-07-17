@@ -1,7 +1,2 @@
-<div *ngIf="afAuth.user | async as user; else showLogin">
-    <app-toolbar></app-toolbar>
-    <router-outlet></router-outlet>        
-</div>
-<ng-template #showLogin>
-    <app-login></app-login>
-</ng-template>
+<app-toolbar></app-toolbar>
+<router-outlet></router-outlet>
