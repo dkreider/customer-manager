@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
+import { Invoice } from 'src/app/models/invoice';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-customer-detail',
@@ -11,6 +13,9 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class CustomerDetailComponent implements OnInit {
 
   subscription: Subscription;
+
+  displayedColumns: string[] = ['customerName', 'service', 'created', 'due'];
+  invoices = new MatTableDataSource();
 
   customerForm = new FormGroup({
     _id: new FormControl(''),
@@ -25,6 +30,7 @@ export class CustomerDetailComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.customerService.getCustomer().subscribe(customer => {
       this.customerForm.patchValue(customer);
+      this.invoices = new MatTableDataSource(customer.invoices);
     });
   }
 

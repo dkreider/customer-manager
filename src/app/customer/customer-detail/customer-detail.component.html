@@ -1,26 +1,53 @@
 <div class="row">
     <h2 class="align-center">{{ customerForm.value._id ? customerForm.value.name : "Add Customer" }}</h2>
     <div class="eight columns offset by-two">
-        <form [formGroup]="customerForm">
-            <mat-form-field appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input matInput placeholder="Full Name" formControlName="name" name="name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" formControlName="email" name="email">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Phone Number</mat-label>
-                <input matInput placeholder="Phone Number" formControlName="phoneNumber" name="phoneNumber">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Notes</mat-label>
-                <textarea matInput placeholder="Notes" formControlName="notes" name="notes">Notes</textarea>
-            </mat-form-field>
-            <button mat-stroked-button class="offset by-three" (click)="saveCustomer()" [disabled]="!customerForm.value.name">Save</button>
-            <button mat-stroked-button class="offset by-one" (click)="clearForm()">Clear</button>
-            <button mat-stroked-button class="offset by-one" (click)="deleteCustomer()" [disabled]="!customerForm.value._id">Delete</button>
-        </form>
+        <mat-tab-group>
+            <mat-tab label="Overview">
+                <form [formGroup]="customerForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput placeholder="Full Name" formControlName="name" name="name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" formControlName="email" name="email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput placeholder="Phone Number" formControlName="phoneNumber" name="phoneNumber">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Notes</mat-label>
+                        <textarea matInput placeholder="Notes" formControlName="notes" name="notes">Notes</textarea>
+                    </mat-form-field>
+                    <button mat-stroked-button class="offset by-three" (click)="saveCustomer()" [disabled]="!customerForm.value.name">Save</button>
+                    <button mat-stroked-button class="offset by-one" (click)="clearForm()">Clear</button>
+                    <button mat-stroked-button class="offset by-one" (click)="deleteCustomer()" [disabled]="!customerForm.value._id">Delete</button>
+                </form>
+            </mat-tab>
+            <mat-tab label="Invoices">
+                <table mat-table [dataSource]="invoices" matSort>
+                    <ng-container matColumnDef="customerName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+                        <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="service">
+                        <th mat-header-cell *matHeaderCellDef> Service </th>
+                        <td mat-cell *matCellDef="let element"> {{element.service}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="created">
+                        <th mat-header-cell *matHeaderCellDef> Issued </th>
+                        <td mat-cell *matCellDef="let element"> {{element.created | date}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="due">
+                        <th mat-header-cell *matHeaderCellDef> Due </th>
+                        <td mat-cell *matCellDef="let element"> {{element.due | date}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <button mat-stroked-button class="offset by-four" id="create-invoice">Create Invoice</button>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>

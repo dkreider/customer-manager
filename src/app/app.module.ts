@@ -18,6 +18,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatTabsModule } from "@angular/material/tabs"
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -48,6 +49,7 @@ import { LoginComponent } from './login/login.component';
     MatSnackBarModule,
     MatIconModule,
     MatMenuModule,
+    MatTabsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],

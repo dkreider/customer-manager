@@ -6,7 +6,24 @@ export var Customers: Array<Customer> = [
         name: "Sarah W",
         email: "sarah@sarah.com",
         phoneNumber: "443-098-9043",
-        notes: "This is a test."
+        notes: "This is a test.",
+        invoices: [{
+            _id: "1",
+            created: new Date(),
+            due: new Date(),
+            customerName: "Richard D",
+            service: "Web Development",
+            value: "$4500",
+            additionalNotes: "Adding the 3 new pages."
+        }, {
+            _id: "2",
+            created: new Date(),
+            due: new Date(),
+            customerName: "George M",
+            service: "Web App Fixes",
+            value: "$2500",
+            additionalNotes: "Fixing the bug that caused a $55000 drop in profit."
+        }]
     },
     {
         _id: "1234",
