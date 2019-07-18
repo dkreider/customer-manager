@@ -15,7 +15,7 @@ export class CustomerDetailComponent implements OnInit {
 
   subscription: Subscription;
 
-  displayedColumns: string[] = ['customerName', 'service', 'created', 'due'];
+  displayedColumns: string[] = ['service', 'value', 'created', 'due'];
   invoices = new MatTableDataSource();
 
   customerForm = new FormGroup({
