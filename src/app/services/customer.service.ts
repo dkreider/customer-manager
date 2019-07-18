@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
 import { Customers } from "../customers";
 import { Subject } from 'rxjs';
+import { Invoice } from '../models/invoice';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,13 @@ export class CustomerService {
     } else {
       Customers.unshift(customer);
     }
+  }
+
+  public addInvoice(customer: Customer, invoice: Invoice): void {
+    let updatedCustomer = Customers.find(cust => {
+      return cust._id == customer._id;
+    });
+    updatedCustomer.invoices.unshift(invoice);
   }
 
 }

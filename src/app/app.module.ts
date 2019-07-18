@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CustomersComponent } from './customer/customers.component';
-import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { CustomerDetailComponent, AddInvoiceDialog } from './customer/customer-detail/customer-detail.component';
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -18,7 +18,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
-import { MatTabsModule } from "@angular/material/tabs"
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -32,7 +35,11 @@ import { LoginComponent } from './login/login.component';
     ToolbarComponent,
     CustomersComponent,
     CustomerDetailComponent,
+    AddInvoiceDialog,
     LoginComponent
+  ],
+  entryComponents: [
+    AddInvoiceDialog
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,9 @@ import { LoginComponent } from './login/login.component';
     MatIconModule,
     MatMenuModule,
     MatTabsModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatDatepickerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],

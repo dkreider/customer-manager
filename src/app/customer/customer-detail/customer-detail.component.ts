@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Invoice } from 'src/app/models/invoice';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 
 @Component({
   selector: 'app-customer-detail',
@@ -25,7 +26,9 @@ export class CustomerDetailComponent implements OnInit {
     notes: new FormControl('')
   });
 
-  constructor(private customerService: CustomerService) { }
+  constructor(
+    private customerService: CustomerService,
+    public addInvoiceDialog: MatDialog) { }
 
   ngOnInit() {
     this.subscription = this.customerService.getCustomer().subscribe(customer => {
@@ -60,4 +63,30 @@ export class CustomerDetailComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  openAddInvoiceDialog(): void {
+    const dialogRef = this.addInvoiceDialog.open(AddInvoiceDialog, {width: '50%', data: new Invoice});
+
+    dialogRef.afterClosed().subscribe(invoice => {
+      if (invoice) {
+        invoice.created = new Date();
+        this.customerService.addInvoice(this.customerForm.value, invoice);
+        this.customerService.requestCustomer(this.customerForm.value._id);
+      }
+    });
+  }
+
+}
+
+@Component({
+  selector: 'add-invoice',
+  templateUrl: 'add-invoice.html'
+})
+
+export class AddInvoiceDialog {
+  constructor(public dialogRef: MatDialogRef<AddInvoiceDialog>,
+    @Inject(MAT_DIALOG_DATA) public invoice: Invoice) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
