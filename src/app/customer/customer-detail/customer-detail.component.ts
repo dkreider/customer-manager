@@ -53,6 +53,7 @@ export class CustomerDetailComponent implements OnInit {
 
   clearForm(): void {
     this.customerForm.reset();
+    this.invoices = new MatTableDataSource();
   }
 
   ngOnDestroy(): void {
