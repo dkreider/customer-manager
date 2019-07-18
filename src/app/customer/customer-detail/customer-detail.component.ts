@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Invoice } from 'src/app/models/invoice';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-customer-detail',
@@ -17,6 +18,8 @@ export class CustomerDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['service', 'value', 'created', 'due'];
   invoices = new MatTableDataSource();
+
+  @ViewChild (MatPaginator, null) paginator: MatPaginator;
 
   customerForm = new FormGroup({
     _id: new FormControl(''),
@@ -34,6 +37,7 @@ export class CustomerDetailComponent implements OnInit {
     this.subscription = this.customerService.getCustomer().subscribe(customer => {
       this.customerForm.patchValue(customer);
       this.invoices = new MatTableDataSource(customer.invoices);
+      this.invoices.paginator = this.paginator;
     });
   }
 
